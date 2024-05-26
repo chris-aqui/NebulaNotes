@@ -1,8 +1,8 @@
-# Notion-like app
+# NebulaNotes app
 
 ### React + TypeScript + Vite
 
-Notion-like app that allows users to create notes and organize them in a tree structure.
+NebulaNotes app that allows users to create notes and organize them in a tree structure.
 
 ## Features
 
