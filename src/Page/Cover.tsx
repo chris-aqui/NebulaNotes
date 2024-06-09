@@ -29,7 +29,7 @@ export const Cover = ({ filePath, changePageCover }: CoverProps) => {
       {filePath ? (
         <FileImage className={styles.image} filePath={filePath} />
       ) : (
-        <img src="/ztm-notes.png" alt="Cover" className={styles.image} />
+        <img src="/assets/img/astro-wallpaper.png" alt="Cover" className={styles.image} />
       )}
       <button className={styles.button} onClick={onChangeCoverImage}>
         Change cover

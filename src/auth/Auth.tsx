@@ -31,7 +31,7 @@ export const Auth = () => {
 	return (
 		<div className={styles.centeredFlex}>
 			<div>
-				<h1>ZTM Notes App</h1>
+				<h1>NebulaNotes App</h1>
 				<p>Sign in via magic link with your email below</p>
 				{loading ? ("Sending magic link...") : (
 					<form onSubmit={handleLogin}>
