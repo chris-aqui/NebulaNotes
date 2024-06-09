@@ -45,6 +45,7 @@ export function withInitialState<TProps>(
             .match({ slug: pageSlug, created_by: user.id })
 
           if (data?.[0]) {
+            console.log('data ', data)
             setInitialState(data?.[0]);
             inProgress.current = false;
             setIsLoading(false);

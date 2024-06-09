@@ -16,7 +16,7 @@ export const Auth = () => {
 			setLoading(true)
 			const { error } = await supabase.auth.signInWithOtp({ email })
 			if(error) throw error
-			alert("CHeck your email for the login link!")
+			alert("Check your email for the login link!")
 		} catch (error){
 			alert(error)
 		} finally {
@@ -31,23 +31,26 @@ export const Auth = () => {
 	return (
 		<div className={styles.centeredFlex}>
 			<div>
-				<h1>NebulaNotes App</h1>
-				<p>Sign in via magic link with your email below</p>
-				{loading ? ("Sending magic link...") : (
-					<form onSubmit={handleLogin}>
-						<label htmlFor="email">Email: </label>
-						<input
-							type="email"
-							id="email"
-							value={email}
-							onChange={e => setEmail(e.target.value)}
-							placeholder="Your email"
-						/>
-						<button>
-							Send magic link
-						</button>
-					</form>
-				)}
+				<div className={styles.authWrapper} >
+					<h1>NebulaNotes App</h1>
+					<p>Sign in via magic link with your email below</p>
+					{loading ? ("Sending magic link...") : (
+						<form onSubmit={handleLogin}>
+							<label htmlFor="email">Email: </label>
+							<input
+								type="email"
+								id="email"
+								value={email}
+								onChange={e => setEmail(e.target.value)}
+								placeholder="Your email"
+							/>
+							<button>
+								Send magic link
+							</button>
+						</form>
+					)}
+				</div>
+				<img className={styles.landerImage} src="/assets/img/lander.png" ></img>
 			</div>
 		</div>
 	)

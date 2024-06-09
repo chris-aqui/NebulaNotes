@@ -10,9 +10,19 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import { useLocation, useNavigate} from 'react-router-dom';
+
 
 export const Page = () => {
   const { title, nodes, addNode, cover, setCoverImage, reorderNodes, setTitle } = useAppState();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const showBackButton = location?.pathname !== '/';
+  console.log('showBackButton ', showBackButton)
+  const handleBackClick = () => {
+    // add logic to go back to the previous page
+    navigate(-1);
+  };
 
   const [focusedNodeIndex, setFocusedNodeIndex] = useFocusedNodeIndex({
     nodes,
@@ -28,6 +38,7 @@ export const Page = () => {
   return (
     <>
       <Cover filePath={cover} changePageCover={setCoverImage} />
+      {showBackButton && <button onClick={handleBackClick}>Go Back</button>}
       <div>
         <Title addNode={addNode} title={title} changePageTitle={setTitle} />
         <DndContext onDragEnd={handleDragEvent}>
