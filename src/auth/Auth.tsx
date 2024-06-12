@@ -60,8 +60,7 @@ export const Auth = () => {
                   }) => setEmail(e.target.value)}
                 />
                 <Button>
-                  {/* Send magic link!  */}
-                  <ChevronRight className="h-1 w1" />
+                  <ChevronRight />
                 </Button>
               </div>
             </form>

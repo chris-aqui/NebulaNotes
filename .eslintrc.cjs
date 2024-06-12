@@ -16,6 +16,15 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'prettier/prettier': 'warn'
+    'prettier/prettier': 'warn',
+
+    // Possible Errors
+    // 'no-console': 'error', // to do
+    // "no-unused-vars": "error", // to do
+    '@typescript-eslint/no-explicit-any': 'warn',
+    'no-var': 'error',
+    'no-duplicate-imports': "error",
+    'no-use-before-define': 'error', 
+    'no-empty': "error",
   },
 }
