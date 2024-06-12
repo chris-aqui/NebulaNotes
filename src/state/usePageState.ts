@@ -1,8 +1,8 @@
-import { Page, NodeData, NodeType } from "../utils/types";
-import { arrayMove } from "@dnd-kit/sortable"
-import { useSyncedState } from "./useSyncedState"
-import { updatePage } from "../utils/updatePage"
-import { createPage } from "../utils/createPage"
+import { Page, NodeData, NodeType } from '../utils/types';
+import { arrayMove } from '@dnd-kit/sortable';
+import { useSyncedState } from './useSyncedState';
+import { updatePage } from '../utils/updatePage';
+import { createPage } from '../utils/createPage';
 
 export const usePageState = (initialState: Page) => {
   const [page, setPage] = useSyncedState(initialState, updatePage);
@@ -26,7 +26,7 @@ export const usePageState = (initialState: Page) => {
   };
 
   const changeNodeType = async (nodeIndex: number, type: NodeType) => {
-    if (type === "page") {
+    if (type === 'page') {
       const newPage = await createPage();
       if (newPage) {
         setPage((draft) => {
@@ -37,7 +37,7 @@ export const usePageState = (initialState: Page) => {
     } else {
       setPage((draft) => {
         draft.nodes[nodeIndex].type = type;
-        draft.nodes[nodeIndex].value = "";
+        draft.nodes[nodeIndex].value = '';
       });
     }
   };
@@ -62,11 +62,11 @@ export const usePageState = (initialState: Page) => {
 
   const reorderNodes = (id1: string, id2: string) => {
     setPage((draft) => {
-      const index1 = draft.nodes.findIndex(node => node.id === id1)
-      const index2 = draft.nodes.findIndex(node => node.id === id2)
-      draft.nodes = arrayMove(draft.nodes, index1, index2)
-    })
-  }
+      const index1 = draft.nodes.findIndex((node) => node.id === id1);
+      const index2 = draft.nodes.findIndex((node) => node.id === id2);
+      draft.nodes = arrayMove(draft.nodes, index1, index2);
+    });
+  };
 
   return {
     nodes: page.nodes,
@@ -79,6 +79,6 @@ export const usePageState = (initialState: Page) => {
     setTitle,
     setCoverImage,
     setNodes,
-    reorderNodes
+    reorderNodes,
   };
 };

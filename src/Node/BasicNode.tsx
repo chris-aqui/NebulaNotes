@@ -1,15 +1,15 @@
-import { NodeData, NodeType } from "../utils/types";
-import styles from "./Node.module.css";
+import { NodeData, NodeType } from '../utils/types';
+import styles from './Node.module.css';
 import {
   useRef,
   useEffect,
   FormEventHandler,
   KeyboardEventHandler,
-} from "react";
-import { nanoid } from "nanoid";
-import { useAppState } from "../state/AppStateContext";
-import { CommandPanel } from "./CommandPanel";
-import cx from "classnames"
+} from 'react';
+import { nanoid } from 'nanoid';
+import { useAppState } from '../state/AppStateContext';
+import { CommandPanel } from './CommandPanel';
+import cx from 'classnames';
 
 type BasicNodeProps = {
   node: NodeData;
@@ -44,13 +44,13 @@ export const BasicNode = ({
   const parseCommand = (nodeType: NodeType) => {
     if (nodeRef.current) {
       changeNodeType(index, nodeType);
-      nodeRef.current.textContent = "";
+      nodeRef.current.textContent = '';
     }
   };
 
   const handleInput: FormEventHandler<HTMLDivElement> = ({ currentTarget }) => {
     const { textContent } = currentTarget;
-    changeNodeValue(index, textContent || "");
+    changeNodeValue(index, textContent || '');
   };
 
   const handleClick = () => {
@@ -59,15 +59,15 @@ export const BasicNode = ({
 
   const onKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
     const target = event.target as HTMLDivElement;
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       event.preventDefault();
-      if (target.textContent?.[0] === "/") {
+      if (target.textContent?.[0] === '/') {
         return;
       }
-      addNode({ type: node.type, value: "", id: nanoid() }, index + 1);
+      addNode({ type: node.type, value: '', id: nanoid() }, index + 1);
       updateFocusedIndex(index + 1);
     }
-    if (event.key === "Backspace") {
+    if (event.key === 'Backspace') {
       if (target.textContent?.length === 0) {
         event.preventDefault();
         removeNodeByIndex(index);
