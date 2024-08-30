@@ -1,6 +1,5 @@
----
-
 # NebulaNotes
+https://nebulanotes.netlify.app/
 
 **NebulaNotes** is a powerful web application that allows users to create, manage, and organize notes in a flexible tree structure. Designed as a Notion-like tool, NebulaNotes offers a rich set of features for both individual and collaborative productivity.
 
@@ -66,3 +65,12 @@ To run NebulaNotes on your local machine, follow these steps:
 - search bar
 - dark mode
 - share notes?
+
+Screenshots
+<img width="848" alt="Screenshot 2024-08-30 at 5 06 16 PM" src="https://github.com/user-attachments/assets/407a79d8-0c14-4efe-b405-97c63c986c57">
+<img width="1429" alt="Screenshot 2024-08-30 at 4 52 16 PM" src="https://github.com/user-attachments/assets/c928e3f1-46ff-4d9a-90a1-88d820c1d625">
+<img width="817" alt="Screenshot 2024-08-30 at 4 52 29 PM" src="https://github.com/user-attachments/assets/c49b539f-0b0f-4e1e-948d-81b0bd647cae">
+
+
+
+
