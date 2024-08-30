@@ -1,44 +1,56 @@
-# NebulaNotes app
+---
 
-### React + TypeScript + Vite
+# NebulaNotes
 
-NebulaNotes app that allows users to create notes and organize them in a tree structure.
+**NebulaNotes** is a powerful web application that allows users to create, manage, and organize notes in a flexible tree structure. Designed as a Notion-like tool, NebulaNotes offers a rich set of features for both individual and collaborative productivity.
 
 ## Features
 
-- Authentication
-- Create, update and delete notes
-- Create, update and delete images
-- Reorder notes
-- Change page title
-- Change page cover image
-- Create, update and delete pages
+- **Authentication**: Secure user authentication powered by Supabase.
+- **Note Management**: Create, update, reorder, and delete notes with ease.
+- **Image Management**: Upload, update, and remove images associated with your notes.
+- **Page Customization**: Modify page titles and cover images to personalize your workspace.
+- **Page Management**: Create, update, and delete entire pages for comprehensive content organization.
 
 ## Tech Stack
 
-The app is generated with Vite and uses the following technologies:
+NebulaNotes is built with modern technologies for a smooth and responsive user experience:
 
-- React
-- TypeScript
-- DndKit (drag and drop)
-- CSS Modules
-- Supabase (database, authentication, storage)
-- Netlify (hosting)
+- **React**: For building interactive user interfaces.
+- **TypeScript**: Ensuring type safety and reducing errors in your code.
+- **Vite**: A fast build tool and development server for a seamless development experience.
+- **DndKit**: A drag-and-drop toolkit that powers the reordering of notes.
+- **TailwindCSS**: A utility-first CSS framework for quick and responsive design.
+- **Supabase**: Provides backend services including database, authentication, and storage.
+- **Netlify**: For fast and reliable hosting.
 
-## Running the app
+## Running the App Locally
 
-To run the app locally, you need to create a Supabase project and add the following environment variables to your `.env` file:
+To run NebulaNotes on your local machine, follow these steps:
 
-```
-VITE_SUPABASE_URL=""
-VITE_SUPABASE_API_KEY=""
-```
+1. **Set Up Supabase**: Create a new project in Supabase and obtain your project URL and API key.
 
-Then run the following commands:
+2. **Configure Environment Variables**: Add the following environment variables to your `.env` file:
 
-```
-npm install
-npm run dev
+   ```
+   VITE_SUPABASE_URL="your-supabase-url"
+   VITE_SUPABASE_API_KEY="your-supabase-api-key"
+   ```
 
-netlify dev
-```
+3. **Install Dependencies**: Install the required dependencies by running:
+
+   ```
+   npm install
+   ```
+
+4. **Start the Development Server**: Start the app using either of the following commands:
+
+   ```
+   npm run dev
+   ```
+
+   or
+
+   ```
+   netlify dev
+   ```

@@ -42,14 +42,6 @@ export const Auth = () => {
             'Sending magic link...'
           ) : (
             <form onSubmit={handleLogin}>
-              {/* <label htmlFor="email">Email: </label> */}
-              {/* <input
-								type="email"
-								id="email"
-								value={email}
-								onChange={e => setEmail(e.target.value)}
-								placeholder="Your email"
-							/> */}
               <div className="flex w-full max-w-sm items-center space-x-2">
                 <Input
                   type="email"

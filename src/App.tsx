@@ -1,3 +1,4 @@
+import './styles/globals.css';
 import { Page } from './Page/Page';
 import { AppStateProvider } from './state/AppStateContext';
 import { Route, Routes } from 'react-router-dom';

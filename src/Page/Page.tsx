@@ -12,6 +12,11 @@ import {
 } from '@dnd-kit/sortable';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import styles from './Page.module.css';
+
+import { Button } from '@/components/ui/button';
+import { ChevronLeft } from 'lucide-react';
+
 export const Page = () => {
   const {
     title,
@@ -45,7 +50,34 @@ export const Page = () => {
   return (
     <>
       <Cover filePath={cover} changePageCover={setCoverImage} />
-      {showBackButton && <button onClick={handleBackClick}>Go Back</button>}
+      {/* {showBackButton && <button onClick={handleBackClick}>Go Back</button>} */}
+      {showBackButton && (
+        <Button
+          className={styles.backButton}
+          variant="outline"
+          size="sm"
+          onClick={handleBackClick}
+        >
+          Go Back <ChevronLeft />
+        </Button>
+
+        /**
+         * variant: {
+        default: string;
+        destructive: string;
+        outline: string;
+        secondary: string;
+        ghost: string;
+        link: string;
+    };
+    size: {
+        default: string;
+        sm: string;
+        lg: string;
+        icon: string;
+         * 
+         */
+      )}
       <div>
         <Title addNode={addNode} title={title} changePageTitle={setTitle} />
         <DndContext onDragEnd={handleDragEvent}>

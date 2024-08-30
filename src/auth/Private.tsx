@@ -13,5 +13,6 @@ export const Private = ({ component }: PrivateProps) => {
     return <> Authenticating...</>;
   }
 
+  // return session ? component : <Navigate to="/auth" />;
   return session ? component : <Navigate to="/auth" />;
 };

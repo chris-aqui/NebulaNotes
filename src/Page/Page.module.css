@@ -1,10 +1,24 @@
 .body {
-	padding-left: 50px;
-	padding-right: 90px;
-	max-width: 900px;
+  padding-left: 50px;
+  padding-right: 90px;
+  max-width: 900px;
 }
 
 .backLink {
-	padding-left: 46px;
-	padding-top: 10px;
+  padding-left: 46px;
+  padding-top: 10px;
+}
+
+.backButton {
+  position: absolute;
+  top: 238px;
+  left: 20px;
+  padding: 6px;
+  transition: opacity 0.2s ease-in-out;
+  background: white;
+  border: 2px solid #888;
+  border-radius: 4px;
+  color: #6f6f6f;
+  font-weight: bold;
+  cursor: pointer;
 }
