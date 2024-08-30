@@ -54,3 +54,15 @@ To run NebulaNotes on your local machine, follow these steps:
    ```
    netlify dev
    ```
+
+---
+
+### future functions/features
+
+- support markdown
+- page directory
+- popup notifications instead of alerts
+- tags
+- search bar
+- dark mode
+- share notes?
