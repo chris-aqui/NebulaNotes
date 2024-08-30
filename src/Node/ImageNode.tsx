@@ -1,10 +1,10 @@
-import { NodeData } from "../utils/types";
-import { ChangeEvent, useEffect, useRef } from "react";
-import { useAppState } from "../state/AppStateContext";
-import cx from "classnames";
-import styles from "./Node.module.css";
-import { FileImage } from "../components/FileImage";
-import { uploadImage } from "../utils/uploadImage";
+import { NodeData } from '../utils/types';
+import { ChangeEvent, useEffect, useRef } from 'react';
+import { useAppState } from '../state/AppStateContext';
+import cx from 'classnames';
+import styles from './Node.module.css';
+import { FileImage } from '../components/FileImage';
+import { uploadImage } from '../utils/uploadImage';
 
 type ImageNodeProps = {
   node: NodeData;
@@ -25,28 +25,28 @@ export const ImageNode = ({ node, isFocused, index }: ImageNodeProps) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       event.preventDefault();
-      if (event.key === "Backspace") {
+      if (event.key === 'Backspace') {
         removeNodeByIndex(index);
       }
-      if (event.key === "Enter") {
+      if (event.key === 'Enter') {
         fileInputRef.current?.click();
       }
     };
     if (isFocused) {
-      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener('keydown', handleKeyDown);
     } else {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     }
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isFocused, removeNodeByIndex, index, node]);
 
   const onImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const target = event.target;
     if (!target.files) {
-      changeNodeType(index, "text");
+      changeNodeType(index, 'text');
     }
     try {
       const result = await uploadImage(target.files?.[0]);
@@ -54,7 +54,7 @@ export const ImageNode = ({ node, isFocused, index }: ImageNodeProps) => {
         changeNodeValue(index, result?.filePath);
       }
     } catch (error) {
-      changeNodeType(index, "text");
+      changeNodeType(index, 'text');
     }
   };
 
@@ -67,7 +67,7 @@ export const ImageNode = ({ node, isFocused, index }: ImageNodeProps) => {
       <FileImage filePath={node.value} />
       <input
         type="file"
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
         ref={fileInputRef}
         onChange={onImageUpload}
       />

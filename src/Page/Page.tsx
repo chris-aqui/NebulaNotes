@@ -1,24 +1,36 @@
-import { useFocusedNodeIndex } from "./useFocusedNodeIndex";
-import { Cover } from "./Cover";
-import { Spacer } from "./Spacer";
-import { NodeContainer } from "../Node/NodeContainer";
-import { Title } from "./Title";
-import { nanoid } from "nanoid";
-import { useAppState } from "../state/AppStateContext";
-import { DndContext, DragOverlay, DragEndEvent } from "@dnd-kit/core";
+import { useFocusedNodeIndex } from './useFocusedNodeIndex';
+import { Cover } from './Cover';
+import { Spacer } from './Spacer';
+import { NodeContainer } from '../Node/NodeContainer';
+import { Title } from './Title';
+import { nanoid } from 'nanoid';
+import { useAppState } from '../state/AppStateContext';
+import { DndContext, DragOverlay, DragEndEvent } from '@dnd-kit/core';
 import {
   SortableContext,
   verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { useLocation, useNavigate} from 'react-router-dom';
+} from '@dnd-kit/sortable';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+import styles from './Page.module.css';
+
+import { Button } from '@/components/ui/button';
+import { ChevronLeft } from 'lucide-react';
 
 export const Page = () => {
-  const { title, nodes, addNode, cover, setCoverImage, reorderNodes, setTitle } = useAppState();
+  const {
+    title,
+    nodes,
+    addNode,
+    cover,
+    setCoverImage,
+    reorderNodes,
+    setTitle,
+  } = useAppState();
   const location = useLocation();
   const navigate = useNavigate();
   const showBackButton = location?.pathname !== '/';
-  console.log('showBackButton ', showBackButton)
+  console.log('showBackButton ', showBackButton);
   const handleBackClick = () => {
     // add logic to go back to the previous page
     navigate(-1);
@@ -38,7 +50,34 @@ export const Page = () => {
   return (
     <>
       <Cover filePath={cover} changePageCover={setCoverImage} />
-      {showBackButton && <button onClick={handleBackClick}>Go Back</button>}
+      {/* {showBackButton && <button onClick={handleBackClick}>Go Back</button>} */}
+      {showBackButton && (
+        <Button
+          className={styles.backButton}
+          variant="outline"
+          size="sm"
+          onClick={handleBackClick}
+        >
+          Go Back <ChevronLeft />
+        </Button>
+
+        /**
+         * variant: {
+        default: string;
+        destructive: string;
+        outline: string;
+        secondary: string;
+        ghost: string;
+        link: string;
+    };
+    size: {
+        default: string;
+        sm: string;
+        lg: string;
+        icon: string;
+         * 
+         */
+      )}
       <div>
         <Title addNode={addNode} title={title} changePageTitle={setTitle} />
         <DndContext onDragEnd={handleDragEvent}>
@@ -57,7 +96,7 @@ export const Page = () => {
         </DndContext>
         <Spacer
           handleClick={() => {
-            addNode({ type: "text", value: "", id: nanoid() }, nodes.length);
+            addNode({ type: 'text', value: '', id: nanoid() }, nodes.length);
           }}
           showHint={!nodes.length}
         />

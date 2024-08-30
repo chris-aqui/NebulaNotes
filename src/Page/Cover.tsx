@@ -1,7 +1,7 @@
-import { useRef, ChangeEventHandler } from "react";
-import styles from "./Cover.module.css";
-import { FileImage } from "../components/FileImage";
-import { uploadImage } from "../utils/uploadImage"
+import { useRef, ChangeEventHandler } from 'react';
+import styles from './Cover.module.css';
+import { FileImage } from '../components/FileImage';
+import { uploadImage } from '../utils/uploadImage';
 
 type CoverProps = {
   filePath?: string;
@@ -15,13 +15,15 @@ export const Cover = ({ filePath, changePageCover }: CoverProps) => {
     fileInputRef.current?.click();
   };
 
-  const onCoverImageUpload: ChangeEventHandler<HTMLInputElement> = async (event) => {
+  const onCoverImageUpload: ChangeEventHandler<HTMLInputElement> = async (
+    event
+  ) => {
     const target = event.target;
-		const result = await uploadImage(target?.files?.[0])
+    const result = await uploadImage(target?.files?.[0]);
 
-		if(result?.filePath){
-			changePageCover(result.filePath)
-		}
+    if (result?.filePath) {
+      changePageCover(result.filePath);
+    }
   };
 
   return (
@@ -29,14 +31,18 @@ export const Cover = ({ filePath, changePageCover }: CoverProps) => {
       {filePath ? (
         <FileImage className={styles.image} filePath={filePath} />
       ) : (
-        <img src="/assets/img/astro-wallpaper.png" alt="Cover" className={styles.image} />
+        <img
+          src="/assets/img/astro-wallpaper.png"
+          alt="Cover"
+          className={styles.image}
+        />
       )}
       <button className={styles.button} onClick={onChangeCoverImage}>
         Change cover
       </button>
       <input
         onChange={onCoverImageUpload}
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
         ref={fileInputRef}
         type="file"
       />

@@ -1,10 +1,10 @@
-import { Page } from "../utils/types";
-import { useMatch } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import { supabase } from "../supabaseClient";
-import startPageScaffold from "./startPageScaffold.json";
-import styles from "../utils.module.css";
-import { Loader } from "../components/Loader";
+import { Page } from '../utils/types';
+import { useMatch } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { supabase } from '../supabaseClient';
+import startPageScaffold from './startPageScaffold.json';
+import styles from '../utils.module.css';
+import { Loader } from '../components/Loader';
 
 type InjectedProps = {
   initialState: Page;
@@ -18,53 +18,51 @@ export function withInitialState<TProps>(
   >
 ) {
   return (props: PropsWithoutInjected<TProps>) => {
-    const match = useMatch("/:slug");
-    const pageSlug = match ? match.params.slug : "start";
+    const match = useMatch('/:slug');
+    const pageSlug = match ? match.params.slug : 'start';
 
     const [initialState, setInitialState] = useState<Page | null>();
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<Error | undefined>();
-    const inProgress = useRef(false)
+    const inProgress = useRef(false);
 
     useEffect(() => {
       if (inProgress.current) {
-        return
+        return;
       }
       setIsLoading(true);
-      inProgress.current = true
+      inProgress.current = true;
       const fetchInitialState = async () => {
         try {
           const { data: userData } = await supabase.auth.getUser();
           const user = userData.user;
           if (!user) {
-            throw new Error("User is not logged in");
+            throw new Error('User is not logged in');
           }
           const { data } = await supabase
-            .from("pages")
-            .select("title, id, cover, nodes, slug")
-            .match({ slug: pageSlug, created_by: user.id })
+            .from('pages')
+            .select('title, id, cover, nodes, slug')
+            .match({ slug: pageSlug, created_by: user.id });
 
           if (data?.[0]) {
-            console.log('data ', data)
+            console.log('data ', data);
             setInitialState(data?.[0]);
             inProgress.current = false;
             setIsLoading(false);
-            return
+            return;
           }
 
-          if (pageSlug === "start") {
-            await supabase
-              .from("pages")
-              .insert({
-                ...startPageScaffold,
-                slug: "start",
-                created_by: user.id,
-              })
+          if (pageSlug === 'start') {
+            await supabase.from('pages').insert({
+              ...startPageScaffold,
+              slug: 'start',
+              created_by: user.id,
+            });
 
             const { data } = await supabase
-              .from("pages")
-              .select("title, id, cover, nodes, slug")
-              .match({ slug: "start", created_by: user.id })
+              .from('pages')
+              .select('title, id, cover, nodes, slug')
+              .match({ slug: 'start', created_by: user.id });
 
             setInitialState(data?.[0]);
           } else {

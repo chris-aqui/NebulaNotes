@@ -1,8 +1,9 @@
-import { Page } from "./Page/Page";
-import { AppStateProvider } from "./state/AppStateContext";
-import { Route, Routes } from "react-router-dom";
-import { Auth } from "./auth/Auth";
-import { Private } from "./auth/Private";
+import './styles/globals.css';
+import { Page } from './Page/Page';
+import { AppStateProvider } from './state/AppStateContext';
+import { Route, Routes } from 'react-router-dom';
+import { Auth } from './auth/Auth';
+import { Private } from './auth/Private';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         element={
           <Private
             component={
-              <AppStateProvider >
+              <AppStateProvider>
                 <Page />
               </AppStateProvider>
             }
@@ -25,7 +26,7 @@ function App() {
         element={
           <Private
             component={
-              <AppStateProvider >
+              <AppStateProvider>
                 <Page />
               </AppStateProvider>
             }
